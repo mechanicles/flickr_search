@@ -1,7 +1,9 @@
 <h2>Flickr Search Results</h2>
 
 <ul>
-  <li>
-    Coffee
-  </li>
+  <% @photos.each do |photo| %>
+    <li>
+      <%= photo.inspect %>
+    </li>
+  <% end %>
 </ul>
