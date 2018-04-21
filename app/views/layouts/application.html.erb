@@ -10,10 +10,33 @@
   </head>
 
   <body>
-    <h1><%= link_to "flickr", root_path %></h1>
-    <% flash.each do |key, value| %>
-      <div class="message <%= key %>"><%= value %></div>
-    <% end %>
-    <%= yield %>
+    <div class="ui inverted fixed menu">
+      <div class="ui container">
+        <%= link_to root_path, class: "item" do %>
+          Flickr Example
+        <% end %>
+        <div class="right item">
+          <div class="ui input">
+            <%= form_tag search_flickr_path, method: :get do %>
+              <%= text_field_tag :text, params[:text], { placeholder: "Search photos" } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="ui main container" style="margin-top:40px">
+      <div class="ui fluid container">
+        <% flash.each do |_, value| %>
+        <div class="ui negative message">
+          <i class="close icon"></i>
+          <div class="header">
+            <%= value %>
+          </div>
+        </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

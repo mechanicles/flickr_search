@@ -1,16 +1,15 @@
-<%= render partial: "search_form" %>
-<br />
 <% if @photos_data.size.zero? %>
   No photos found for '<%= @search_text %>' :(
 <% else %>
-  Showing first ten photos for '<%= @search_text %>'
-  <ul>
+  <i>Results for '<%= @search_text %>'</i>
+  <div class="ui relaxed horizontal list">
     <% @photos_data.each do |photo| %>
-      <li>
-        Title: <%= photo['title'] %>
-        <br />
-        <img src="<%= photo['url_s']%>" alt="<%= photo['title'] %>"
-      </li>
+      <div class="item">
+        <div class="content">
+          <%= photo['title'] %>
+        </div>
+        <img src="<%= photo['url_s']%>" alt="<%= photo['title']%>" class="ui image">
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% end %>

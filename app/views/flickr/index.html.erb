@@ -1,1 +1,8 @@
-<%= render partial: "search_form" %>
+<% if flash[:error].present? %>
+  <%= form_tag search_flickr_path, method: :get do %>
+    <div class="ui input">
+      <%= text_field_tag :text, nil, { placeholder: "Search photos" } %>
+    </div>
+    <%= submit_tag "Submit", class: "ui primary button" %>
+  <% end %>
+<% end %>
