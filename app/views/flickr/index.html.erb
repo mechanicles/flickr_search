@@ -1,0 +1,7 @@
+<h2>Flickr search</h2>
+
+<%= form_tag search_flickr_path, method: :get do %>
+  <%= label_tag "Search" %>
+  <%= text_field_tag :text %>
+  <%= submit_tag "Search" %>
+<% end %>
