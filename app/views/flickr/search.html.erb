@@ -1,9 +1,19 @@
-<h2>Flickr Search Results</h2>
+<%= render partial: "search_form" %>
 
-<ul>
-  <% @photos.each do |photo| %>
-    <li>
-      <%= photo.inspect %>
+<br />
+
+<% if @photos_data.size.zero? %>
+  No photos found for '<%= @search_text %>' :(
+<% else %>
+  Showing first ten photos for '<%= @search_text %>'
+  <ul>
+    <% @photos_data.each do |photo| %>
+      <li>
+        Title: <%= photo['title'] %>
+      <br />
+      <img src="<%= photo['url_s']%>" alt="<%= photo['title'] %>"
     </li>
   <% end %>
 </ul>
+<% end %>
+<br />

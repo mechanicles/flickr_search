@@ -2,8 +2,15 @@ require "rails_helper"
 
 RSpec.describe "Searching flikcr images", type: :system do
 
-  it "search flickr images for given text" do
-    visit flickr_path
+  it "redirects to root page if passed text is empty" do
+    visit root_path
+    fill_in "text", with: ""
+    click_on("Search")
+    expect(current_path).to eql(root_path)
+  end
+
+  it "searches flickr images for given text" do
+    visit root_path
     fill_in "text", with: "Coffee"
     click_on("Search")
     expect(page).to have_content("Coffee")

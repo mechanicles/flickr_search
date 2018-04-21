@@ -5,14 +5,14 @@ class FlickrController < ApplicationController
   end
 
   def search
-    search_text = params["text"]
+    @search_text = params["text"]
 
-    if search_text.blank?
-      flash[:message] = "Please enter correct value"
-      redirect_to flickr_path
+    if @search_text.blank?
+      flash[:error] = "Please enter correct search query"
+      redirect_to root_path
     else
-      flickr  = FlickRaw::Flickr.new
-      @photos = flickr.photos.search(text: search_text, extras: ["url_sq"])
+      @photos_data = flickr.photos.search(text: @search_text, sort: 'relevance',
+                                          per_page: 10, extras: 'url_s')
     end
   end
 

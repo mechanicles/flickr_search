@@ -1,0 +1,4 @@
+<%= form_tag search_flickr_path, method: :get do %>
+  <%= text_field_tag :text, params[:text], { placeholder: "Photos" } %>
+  <%= submit_tag "Search" %>
+<% end %>

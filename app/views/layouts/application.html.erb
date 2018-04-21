@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <h1><%= link_to "flickr", root_path %></h1>
+    <% flash.each do |key, value| %>
+      <div class="message <%= key %>"><%= value %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
