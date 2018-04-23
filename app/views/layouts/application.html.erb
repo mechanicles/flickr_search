@@ -16,12 +16,7 @@
           Flickr Example
         <% end %>
         <div class="right item">
-          <div class="ui input">
-            <%= form_tag search_flickr_path, method: :get, id: "search_photos" do %>
-              <%= text_field_tag :text, params[:text], { placeholder: "Search photos" } %>
-              <%= submit_tag "Submit", class: "ui primary button" %>
-            <% end %>
-          </div>
+          <%= render partial: "search_form" %>
         </div>
       </div>
     </div>
